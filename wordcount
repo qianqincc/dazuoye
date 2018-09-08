@@ -1,0 +1,59 @@
+package dazuoye1;
+import java.io.*;
+import java.util.*;
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+System.out.print("please input the path");		
+Scanner pa= new Scanner(System.in);
+String path=pa.next();
+System.out.print("please input the filename");
+Scanner fn= new Scanner(System.in);
+String filename =fn.next();
+System.out.print("请输入 -c 或者 -w ");	
+
+Scanner sc = new Scanner(System.in);
+String zhiling =sc.next();
+
+if(zhiling.equals("-c")) 
+System.out.print(char_number(path,filename));
+
+if(zhiling.equals("-w"))
+	System.out.print(word_number(path,filename));
+
+	}
+
+	
+	
+	static int char_number(String path,String filename) {
+		File file=new File(path,filename);
+		Reader read=null;
+		int char_num=0;
+		try {
+			 read =new InputStreamReader(new FileInputStream(file));
+			 BufferedReader readfile= new BufferedReader(read);
+	            int tempchar;
+	            while ((tempchar=readfile.read()) != -1) {
+	                if((char)tempchar!='\r'&&(char)tempchar!='\n'){
+	                    char_num++;
+	                }
+	            }
+	            readfile.close();
+		}
+        catch(Exception e){
+            System.out.println("指定输入文件不存在");
+        }    
+        return char_num;
+	}
+	
+	static int word_number(String path,String filename) {
+		
+	}
+	
+	
+	
+	
+	
+	
+}
